@@ -17,15 +17,19 @@ class TraverseDiscaveryPage(unittest.TestCase):
 		unittest.TestCase.__init__(self, methodName)
 		self.lastEleIndex = 0
 		self.currentEleIndex = 0
-		'''
+		
+		
 		self.appPackage = 'com.yixia.videoeditor'         #设置被测试应用的包名
-		self.appActivity = '.ui.login.SplashActivity'     #设置被测试应用的启动Activity
+		self.appActivity = '.login.ui.SplashActivity'     #设置被测试应用的启动Activity
 		self.testActivity = ".ui.FragmentTabsActivity"    #设置被测试应用的页面的activity
 		'''
+		
+		
 		
 		self.appPackage = 'com.example.crashtest'         #设置被测试应用的包名
 		self.appActivity = '.MainMyActivity'              #设置被测试应用的启动Activity
 		self.testActivity = ".MainMyActivity"             #设置被测试应用的页面的activity
+		'''
 		
 		print '************************** MPdetailPage test **************************'
 		print Common.getDesktopActivity()
@@ -38,14 +42,19 @@ class TraverseDiscaveryPage(unittest.TestCase):
 	def tearDown(self):
 		Common.tearDown(self)
 
-		#初始化进入某个指定的页面进行遍历测试
+	#初始化进入某个指定的页面进行遍历测试
 	def goIntoPage(self):
 		'''
 		Initialize.init_case(self)
 		self.driver.find_element_by_id('com.yixia.videoeditor:id/bottom_message_tip').click()
 		sleep(2)
 		'''
-		pass
+
+		#判断当前Activity是否为被测试Activity，如果不是抛出异常，让用例执行失败
+		if(Common.isTestActivity(self)):
+			pass
+		else:
+			Common.excuteFailed("不是被测试activity")
 
 	def test_traverse_discavery_page(self):
 		TraverseEles.traverse_all_elements(self)

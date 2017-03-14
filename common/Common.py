@@ -27,6 +27,7 @@ def tearDown(params):
 	params.driver.quit()
 	print 'end ... '
 
+#获取桌面的Activity
 def getDesktopActivity():
 	output = commands.getstatusoutput('adb shell dumpsys activity | grep "mFocusedActivity"')
 	aaa =  output[1]
@@ -36,11 +37,11 @@ def getDesktopActivity():
 	result = ccc[0]
 	return result
 
+#获取被测试应用的进程号
 def getPorcessId(packageName):
 	command = "adb shell ps | grep " + "'" + packageName + "'"
 	output = commands.getstatusoutput(command)
 	result = ""
-	print output[1]
 	if(output[1] == ""):
 		pass
 	else:
@@ -52,12 +53,29 @@ def getPorcessId(packageName):
 			for j in ccc:
 				if(j != ""):
 					li.append(j)
+			li[8] = li[8].replace("\r","")    #去掉字符串末尾的换行符号
+			li[8] = li[8].replace("\n","")    #去掉字符串末尾的换行符号
 			if(li[8] == packageName):
 				result = li[1]
 	return result
 
 
+#判断当前activity是否为被测试Activity
+def isTestActivity(params):
+	activity = params.testActivity
+	curActivity = params.driver.current_activity
+	if(activity == curActivity):
+		return True
+	else:
+		return False
 
+#让用例执行失败
+def excuteFailed(info):
+	print "do excuteFailed ..."
+	raise Exception(info)
+
+
+#截取错误截图，并保存到相应的文件夹
 def cutScreenShot(picName,params):
 	if(os.path.exists("errorScreenShot")):
 		pass

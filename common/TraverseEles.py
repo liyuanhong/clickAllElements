@@ -146,7 +146,7 @@ def handleCrash(params):
 	if(pid == ""):
 		Common.cutScreenShot(str(params.currentEleIndex),params)
 	elif(desktopActivity == activity):
-		Common.cutScreenShot((params.currentEleIndex),params)
+		Common.cutScreenShot(str(params.currentEleIndex),params)
 	else:
 		pass
 

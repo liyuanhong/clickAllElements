@@ -98,7 +98,7 @@ def traverseAllPicAndTextEles(params):
 	sleep(5)
 	e1 = params.driver.find_elements_by_xpath('//*')
 	print "当前页面共有：" + str(len(e1)) + " 元素"
-	print params.driver.current_activity
+	#print params.driver.current_activity
 	for i in range (params.currentEleIndex,len(e1)):
 		try:
 			e1[i].get_attribute("clickable")   #如果元素不存在，则进入except代码块
@@ -139,6 +139,7 @@ def traverseAllPicAndTextEles(params):
 			traverseAllPicAndTextEles(params)
 			break
 
+#处理被测试应用崩溃的情况，以及是否发生崩溃
 def handleCrash(params):
 	pid = Common.getPorcessId(params.appPackage)
 	desktopActivity = Common.getDesktopActivity()

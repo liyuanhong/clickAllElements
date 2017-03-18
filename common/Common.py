@@ -31,7 +31,6 @@ def tearDown(params):
 def getDesktopActivity():
 	output = commands.getstatusoutput('adb shell dumpsys activity | grep "mFocusedActivity"')
 	aaa =  output[1]
-	print aaa
 	bbb = aaa.split("/")
 	ccc = bbb[1].split(" ")
 	result = ccc[0]

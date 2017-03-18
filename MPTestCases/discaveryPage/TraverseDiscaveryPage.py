@@ -24,8 +24,6 @@ class TraverseDiscaveryPage(unittest.TestCase):
 		self.testActivity = ".ui.FragmentTabsActivity"    #设置被测试应用的页面的activity
 		'''
 		
-		
-		
 		self.appPackage = 'com.example.crashtest'         #设置被测试应用的包名
 		self.appActivity = '.MainMyActivity'              #设置被测试应用的启动Activity
 		self.testActivity = ".MainMyActivity"             #设置被测试应用的页面的activity
@@ -44,22 +42,20 @@ class TraverseDiscaveryPage(unittest.TestCase):
 
 	#初始化进入某个指定的页面进行遍历测试
 	def goIntoPage(self):
-		'''
+		
 		Initialize.init_case(self)
 		self.driver.find_element_by_id('com.yixia.videoeditor:id/bottom_message_tip').click()
 		sleep(2)
-		'''
-
+		
 		#判断当前Activity是否为被测试Activity，如果不是抛出异常，让用例执行失败
 		if(Common.isTestActivity(self)):
-			pass
+			print "被测试的Activity为：" + self.driver.current_activity + ",是被测试的Activity"
 		else:
 			Common.excuteFailed("不是被测试activity")
 
 	def test_traverse_discavery_page(self):
 		TraverseEles.traverse_all_elements(self)
 		sleep(5)
-		print Common.getPorcessId(self.appPackage)
 
 
 def suite(self):

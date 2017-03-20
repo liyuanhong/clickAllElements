@@ -142,12 +142,15 @@ def traverseAllPicAndTextEles(params):
 #处理被测试应用崩溃的情况，以及是否发生崩溃
 def handleCrash(params):
 	pid = Common.getPorcessId(params.appPackage)
-	desktopActivity = Common.getDesktopActivity()
+	#desktopActivity = Common.getDesktopActivity()
+	desktopActivity = params.desktopActivity
 	activity = params.driver.current_activity   #获取当前Activity
 	if(pid == ""):
 		Common.cutScreenShot(str(params.currentEleIndex),params)
+		print "pid"
 	elif(desktopActivity == activity):
 		Common.cutScreenShot(str(params.currentEleIndex),params)
+		print "desktop"
 	else:
 		pass
 

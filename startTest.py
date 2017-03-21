@@ -35,6 +35,7 @@ import TraverseDiscaveryPage
 import TraverseHotPage
 import TraverseMyPage
 import TraverseRebangPage
+import TraverseMydetailPage
 
 #执行完所有用例所消耗的时间
 totalTime = 0
@@ -47,7 +48,8 @@ delErrorPng()
 #TraverseDiscaveryPage.suite("0")
 #TraverseHotPage.suite("0")
 #TraverseMyPage.suite("0")
-TraverseRebangPage.suite("0")
+#TraverseRebangPage.suite("0")
+TraverseMydetailPage.suite("0")
 
 
 
